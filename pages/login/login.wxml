@@ -1,0 +1,6 @@
+<!--login.wxml-->
+<view class="log-list">
+  <view>123</view>
+  <view>456</view>
+</view>
+

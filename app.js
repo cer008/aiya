@@ -3,6 +3,7 @@ App({
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
+    //unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
