@@ -1,6 +1,46 @@
 <!--login.wxml-->
-<view class="log-list">
+<!-- <view class="log-list">
   <view>123</view>
   <view>456</view>
 </view>
+<van-row utter="20">
+  <van-col span="8">span: 8</van-col>
+  <van-col span="8">span: 8</van-col>
+  <van-col span="8">span: 8</van-col>
+</van-row>
 
+<van-row>
+  <van-col span="4">span: 4</van-col>
+  <van-col span="10" offset="4">offset: 4, span: 10</van-col>
+</van-row>
+
+<van-row>
+  <van-col offset="12" span="12">offset: 12, span: 12</van-col>
+</van-row>
+
+<van-button type="primary">主要按钮</van-button> -->
+<van-panel title="标题" desc="描述信息" status="状态">
+  <view>内容</view>
+</van-panel>
+<!-- <view class="top">
+  <van-cell-group>
+  <van-field
+    value="{{ username }}"
+    required
+    clearable
+    label="用户名"
+    icon="question-o"
+    placeholder="请输入用户名"
+    bind:click-icon="onClickIcon"
+  />
+
+  <van-field
+    value="{{ password }}"
+    type="password"
+    label="密码"
+    placeholder="请输入密码"
+    required
+    border="{{ false }}"
+  />
+</van-cell-group>
+</view> -->

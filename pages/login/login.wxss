@@ -1,15 +1,16 @@
-.log-list {
+/* .log-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 20rpx 20rpx 20rpx 20rpx;
 }
 .log-item {
   margin: 10rpx;
-}
+} */
 
-/* .top{
+.top{
   display:flex;
   flex-direction:row;
   flex-wrap:wrap;
   justify-content:center;
-} */
+  background-color: rgba(69, 90, 100, 0.6);
+}
