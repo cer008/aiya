@@ -1,13 +1,39 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="all">
+  <!-- <image class="imgg" src="/image/医生岗位.png" mode="widthFix"></image> -->
+  <view>
+    <button class="userinfo" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <view wx:else>
+      <!-- <van-grid column-num="3" border="{{ false }}">
+        <van-grid-item usot wx:for="{{ 3 }}" wx:for-item="index">
+          <image style="width: 90px; height: 90px;" src="/image/医生岗位.png" />
+        </van-grid-item>
+      </van-grid> -->
+       <van-grid clickable column-num="3" border="{{ false }}">
+        <swiper>
+          <swiper-item>
+            <image style="width: 100%; height: 100%;" src="/image/0.png" />
+          </swiper-item>
+           <swiper-item>
+            <image style="width: 100%; height: 100%;" src="/image/医生岗位.png" />
+          </swiper-item>
+        </swiper>
+      </van-grid>
+      <van-grid clickable column-num="3" border="{{ false }}">
+        <van-grid-item icon="/image/医生岗位.png" link-type="navigateTo" url="/pages/dashboard/index" text="添加病历" />
+        <van-grid-item icon="friends" link-type="reLaunch" url="/pages/dashboard/index" text="我的患者" info="99+" />
+        <van-grid-item icon="add" link-type="navigateTo" url="/pages/dashboard/index" text="添加病历" info="99+" />
+      </van-grid>
+      <van-divider />
+      <van-grid clickable column-num="4" border="{{ false }}" gutter="{{ 10 }}">
+        <van-grid-item icon="/image/医生岗位.png" link-type="navigateTo" url="/pages/dashboard/index" text="添加病历" />
+        <van-grid-item icon="friends" link-type="reLaunch" url="/pages/dashboard/index" text="我的患者" info="99+" />
+        <van-grid-item icon="add" link-type="navigateTo" url="/pages/dashboard/index" text="添加病历" info="99+" />
+        <van-grid-item icon="friends" link-type="reLaunch" url="/pages/dashboard/index" text="我的患者" info="99+" />
+      </van-grid>
+    </view>
   </view>
-  <view class="usermotto">
+  <!-- <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
-  </view>
+  </view> -->
 </view>

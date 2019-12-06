@@ -2,11 +2,16 @@ const app = getApp()
 
 Page({
   data: {
-
+    activeNames: ['1']
   },
 
   onShow() {
     this.getTabBar().init();
+  },
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail
+    });
   },
 
   onLoad: function () {
