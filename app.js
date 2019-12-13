@@ -2,6 +2,7 @@
 App({
   onLaunch: function () {
     // 展示本地存储能力
+    console.log("onLaunch")
     var logs = wx.getStorageSync('logs') || []
     //unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度
     logs.unshift(Date.now())
@@ -11,7 +12,7 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-       
+        res.code
       }
     })
     // 获取用户信息
@@ -21,7 +22,8 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              // 可以将 res 发送给后台解码出 unionId
+              console.log("getUserInfo")
+              // 可以将 res 发送给后台解码出 unionId  
               this.globalData.userInfo = res.userInfo
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
@@ -31,7 +33,6 @@ App({
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
-             
             }
           })
         }
@@ -40,6 +41,7 @@ App({
     
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    hasUserInfo: false,
   }
 })

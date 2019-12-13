@@ -3,12 +3,12 @@ Component({
 		active: 0,
 		list: [
       {
-        icon: 'wap-home',
+        icon: '/image/sheet_8.png',
         text: '首页',
         url: '/pages/work/work'
       },
 			{
-        icon: 'manager',
+        icon: '/image/sheet_39.png',
         text: '我的',
         url: '/pages/user/user'
 			}
