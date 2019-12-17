@@ -12,8 +12,26 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        res.code
-      }
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'http://172.24.112.176:8080/login',
+            //method: "POST",
+            data: {
+              code: res.code
+            },
+            success: function (res) {
+              wx.setStorage({
+                key: "token",
+                data: res.data.data
+              })
+              console.log(res.data);
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }     
     })
     // 获取用户信息
     wx.getSetting({
@@ -42,6 +60,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    hasUserInfo: false,
+    hasUserInfo: false
   }
 })

@@ -10,6 +10,7 @@
         <view class="flex-item bc_blue">3</view>
       </view>
     </view>
+    <van-button color="#7232dd" bind:click="butt">单色按钮</van-button>
   </view>
 
 </view>
