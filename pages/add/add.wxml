@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<van-nav-bar title="新建客户" left-text="取消" right-text="保存" bind:click-left="onClickLeft" bind:click-right="onClickRight" />
+<van-tabs active="a">
+  <van-tab title="个人信息" name="a">
+    <van-cell-group>
+      <van-field type="text" value="{{ userName }}" required clearable clickable label="姓名" placeholder="请输入用户名" />
+      <van-cell title="性别" is-link bind:click="showSexPopup" />
+      <van-cell title="生日" is-link bind:click="showBirthdayPopup" />
+      <van-field value="{{ age }}" required clearable clickable label="年龄" placeholder="请输入年龄" />
+      <van-field value="{{ sms }}" center clearable label="验证码" placeholder="请输入短信验证码" use-button-slot>
+        <van-button slot="button" size="small" type="primary">发送验证码</van-button>
+      </van-field>
+    </van-cell-group>
+
+  </van-tab>
+  <van-tab title="联系方式" name="b">内容 2</van-tab>
+  <van-tab title="患者信息" name="c">内容 3</van-tab>
+</van-tabs>
+<van-popup show="{{ popupBirthdayShow }}" position="bottom" custom-style="height: 50%" bind:close="closeBirthdayPopup">
+  <van-datetime-picker type="date" value="{{ currentDate }}" bind:input="onInput" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+</van-popup>
+<van-popup show="{{ popupSexShow }}" position="bottom" custom-style="height: 50%" bind:close="closeSexPopup">
+  <van-picker show-toolbar columns="{{ sexs }}" default-index="{{ 0 }}" bind:cancel="onCancelSexs" bind:confirm="onConfirmSexs" />
+</van-popup>

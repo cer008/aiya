@@ -3,8 +3,7 @@
   <!-- <image class="imgg" src="/image/医生岗位.png" mode="widthFix"></image> -->
   <view>
     <button class="userinfo" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <view wx:else>
-      
+    <view wx:else> 
        <van-grid clickable border="{{ false }}">
         <swiper>
           <swiper-item>
@@ -16,10 +15,11 @@
         </swiper>
       </van-grid>
        <van-divider />
-      <van-grid clickable column-num="3" border="{{ false }}" gutter="{{ 40 }}">
-        <van-grid-item icon="/image/sheet_5.png" link-type="switchTab" bind:click="clicktest" url="/pages/dashboard/index" text="" />
-        <van-grid-item icon="/image/sheet_4.png" link-type="switchTab" url="/pages/dashboard/index" text="" />
-        <van-grid-item icon="/image/sheet_23.png" link-type="switchTab" url="/pages/dashboard/index" text="" info="1" />
+      <van-grid clickable column-num="3" border="{{ false }}" gutter="{{ 50 }}">
+        <van-grid-item icon="/image/sheet_4.png" link-type="switchTab" url="/pages/dashboard/index" text="日程" />
+        <van-grid-item icon="/image/sheet_5.png" link-type="switchTab" bind:click="clicktest" text="添加" />     
+        <van-grid-item icon="/image/sheet_23.png" link-type="switchTab" url="/pages/dashboard/index" text="患者" info="1" />
+        <!-- <van-grid-item icon="/image/sheet_23.png" link-type="switchTab" url="/pages/dashboard/index" text="测试" info="1" /> -->
         <!-- <van-grid-item icon="add" link-type="navigateTo" url="/pages/dashboard/index" text="添加病历" info="99+" /> -->
       </van-grid>
       <van-divider />

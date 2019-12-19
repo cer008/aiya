@@ -6,10 +6,8 @@ Page({
     motto: 'Hello World',
     userInfo: null,
     hasUserInfo: true,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    staffA: { firstName: 'Hulk', lastName: 'Hu' },
-    staffB: { firstName: 'Shang', lastName: 'You' },
-    staffC: { firstName: 'Gideon', lastName: 'Lin' }
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
+   
   },
   //事件处理函数
   bindViewTap: function () {
@@ -35,65 +33,41 @@ Page({
     this.getTabBar().init();
   },
   onLoad: function () {
+    console.log("1")
     console.log(app.globalData.userInfo)
-    console.log(this.data.hasUserInfo)
-    console.log(this.data.userInfo)
     if (app.globalData.userInfo) {
+      console.log("userInfo存在1")
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-       console.log(11)
-      // wx.navigateTo({
-      //   url: '/pages/work/work',
-      // })
+      this.login();
     } else if (this.data.canIUse) {
-      console.log(22)
-      this.setData({
-        hasUserInfo: false
-      })      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
+      console.log("canIUse")
       app.userInfoReadyCallback = res => {
+        console.log('userInfoReadyCallback: ', res);
+        console.log('获取用户信息成功');
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          userInfo: res
         })
-        // wx.navigateTo({
-        //   url: '/pages/work/work',
-        // })
-      }
-    } else {
-      console.log(33)
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => { 
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-          wx.switchTab({
-            url: '/pages/work/work',
-          })
-        }
-      })
+      };
     }
+    console.log("2")
   },
   getUserInfo: function (e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-    wx.switchTab({
-      url: '/pages/work/work',
-    })
+
   },
   clicktest:function(e){
-    console.log("clicktest");
-    console.log(app.globalData.userInfo)
-    console.log(this.data.hasUserInfo)
-    console.log(this.data.userInfo)
+    wx.navigateTo({
+      url: '/pages/add/add',
+    })
+    // wx.switchTab({
+    //   url: '/pages/index/index',
+    // })
   }
 })
