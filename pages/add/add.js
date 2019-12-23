@@ -1,68 +1,161 @@
-const app = getApp()
-import Toast from '@vant/weapp/toast/toast';
-Page({
+Component({
   data: {
-    activeNames: ['1'],
-    sexs: ['男', '女'],
-    popupBirthdayShow:false,
-    popupSexShow: false,
-    currentDate: new Date().getTime(),
-    minDate: new Date().getTime(),
-    formatter(type, value) {
-      if (type === 'year') {
-        return `${value}年`;
-      } else if (type === 'month') {
-        return `${value}月`;
+    loading: false,
+    color: '#000',
+    background: '#f8f8f8',
+    show: true,
+    animated: false,
+    showTopTips: false,
+    successInfo:'',
+    errorInfo:'',
+    checkboxItems: [{
+        name: '男',
+        value: '0',
+        checked: true
+      },
+      {
+        name: '女',
+        value: '1'
       }
-      return value;
-    }
-  },
-  showBirthdayPopup() {
-    this.setData({ popupBirthdayShow: true });
-  },
-  closeBirthdayPopup() {
-    this.setData({ popupBirthdayShow: false });
-  },
-  showSexPopup() {
-    this.setData({ popupSexShow: true });
-  },
-  closeSexPopup() {
-    this.setData({ popupSexShow: false });
-  },
-  onConfirmSexs(event) {
-    const { picker, value, index } = event.detail;
-    Toast(`当前值：${value}, 当前索引：${index}`);
-  },
-  onClickLeft() {
-    wx.switchTab({
-      url: '/pages/work/work',
-    })
-  },
-  onClickRight() {
-    wx.showToast({ title: '点击按钮', icon: 'none' });
-  },
-  onChangerRadio(event) {
-    this.setData({
-      radio: event.detail
-    });
-  },
-  onClick(event) {
-    const { name } = event.currentTarget.dataset;
-    this.setData({
-      radio: name
-    });
-  },
-  onShow() {
-    //this.getTabBar().init();
-  },
-  onChange(event) {
-    // this.setData({
-    //   activeNames: event.detail
-    // });
-  },
+    ],
+    isAgree: false,
+    formData: {},
+    userName: "",
+    birthday: "",
+    region: "",
+    rules: [{
+      name: 'userName',
+      rules: {
+        required: true,
+        message: '姓名不能为空'
+      },
+    }, {
+      name: 'mobilePhone',
+      rules: [{
+        required: true,
+        message: '手机号不能为空'
+      }, {
+        mobile: true,
+        message: '手机号格式不正确'
+      }],
+    }, {
+      name: 'address',
+      rules: {
+        required: true,
+        message: '详细地址不能为空'
+      },
+    }]
 
-  onLoad: function () {
-    console.log('代码片段是一种迷你、可分享的小程序或小游戏项目，可用于分享小程序和小游戏的开发经验、展示组件和 API 的使用、复现开发问题和 Bug 等。可点击以下链接查看代码片段的详细文档：')
-    console.log('https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html')
   },
+  methods: {
+    sexChange: function(e) {
+      this.setData({
+        [`formData.sex`]: e.detail.value
+      });
+    },
+    bindbirthdayChange: function(e) {
+      this.setData({
+        birthday: e.detail.value,
+        [`formData.birthday`]: e.detail.value
+      });
+    },
+    ageChange: function(e) {
+      this.setData({
+        [`formData.age`]: e.detail.value
+      });
+    },
+    medicalRecordNoChange: function(e) {
+      this.setData({
+        [`formData.medicalRecordNo`]: e.detail.value
+      });
+    },
+    mobilePhoneChange: function(e) {
+      this.setData({
+        mobilePhone: e.detail.value,
+        [`formData.mobilePhone`]: e.detail.value
+      });
+    },
+    phoneChange: function(e) {
+      this.setData({
+        [`formData.phone`]: e.detail.value
+      });
+    },
+    regionChange: function(e) {
+      this.setData({
+        region: e.detail.value,
+        [`formData.region`]: e.detail.value
+      });
+    },
+    addressChange: function(e) {
+      this.setData({
+        [`formData.address`]: e.detail.value
+      });
+    },
+    remarkBlur: function(e) {
+      this.setData({
+        [`formData.remark`]: e.detail.value
+      });
+    },
+    bindDateChange: function(e) {
+      this.setData({
+        date: e.detail.value,
+        [`formData.date`]: e.detail.value
+      })
+    },
+    userNameChange(e) {
+      // const { userName } = e.currentTarget.dataset
+      this.setData({
+        userName: e.detail.value,
+        [`formData.userName`]: e.detail.value
+      })
+    },
+
+    submitForm(e) {
+      //const that = this;
+      //console.log('form发生了submit事件，携带数据为：', this.formData)
+      this.selectComponent('#form').validate((valid, errors) => {
+        console.log('valid', valid, errors)
+        if (valid) {
+          console.log('form发生了submit事件，携带数据为：', this.data.formData)
+          wx.getStorage({
+            key: 'token',
+            success: function(res) {
+              wx.request({
+                url: App.globalData.baseUrl + 'test',
+                method: 'POST',
+                header: {
+                  'Authorization': 'Bearer' + res.data,
+                  'content-type': 'application/json',
+                },
+                data: {
+                  token: res.data,
+                  date: this.data.formData
+                },
+                success: function(res) {
+                  if (res.data.code === 200) {
+                    this.setData({
+                      successInfo: '保存成功'
+                    })
+                  } else {
+                    this.setData({
+                      errorInfo: '保存失败'
+                    })
+                  }
+                }
+              })
+            }
+          })
+
+        } else {
+          const firstError = Object.keys(errors)
+          if (firstError.length) {
+            this.setData({
+              error: errors[firstError[0]].message
+            })
+          }
+        }
+      })
+    }
+
+  }
 })

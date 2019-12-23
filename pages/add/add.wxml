@@ -1,24 +1,64 @@
-<!--index.wxml-->
-<van-nav-bar title="新建客户" left-text="取消" right-text="保存" bind:click-left="onClickLeft" bind:click-right="onClickRight" />
-<van-tabs active="a">
-  <van-tab title="个人信息" name="a">
-    <van-cell-group>
-      <van-field type="text" value="{{ userName }}" required clearable clickable label="姓名" placeholder="请输入用户名" />
-      <van-cell title="性别" is-link bind:click="showSexPopup" />
-      <van-cell title="生日" is-link bind:click="showBirthdayPopup" />
-      <van-field value="{{ age }}" required clearable clickable label="年龄" placeholder="请输入年龄" />
-      <van-field value="{{ sms }}" center clearable label="验证码" placeholder="请输入短信验证码" use-button-slot>
-        <van-button slot="button" size="small" type="primary">发送验证码</van-button>
-      </van-field>
-    </van-cell-group>
-
-  </van-tab>
-  <van-tab title="联系方式" name="b">内容 2</van-tab>
-  <van-tab title="患者信息" name="c">内容 3</van-tab>
-</van-tabs>
-<van-popup show="{{ popupBirthdayShow }}" position="bottom" custom-style="height: 50%" bind:close="closeBirthdayPopup">
-  <van-datetime-picker type="date" value="{{ currentDate }}" bind:input="onInput" min-date="{{ minDate }}" formatter="{{ formatter }}" />
-</van-popup>
-<van-popup show="{{ popupSexShow }}" position="bottom" custom-style="height: 50%" bind:close="closeSexPopup">
-  <van-picker show-toolbar columns="{{ sexs }}" default-index="{{ 0 }}" bind:cancel="onCancelSexs" bind:confirm="onConfirmSexs" />
-</van-popup>
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__hd">
+    <view class="page__title">Form</view>
+    <view class="page__desc">表单输入</view>
+  </view>
+  <view class="page__bd">
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+      <mp-cells>
+        <mp-cell prop="userName" title="姓名">
+          <input bindinput="userNameChange" data-field="userName" class="weui-input" placeholder="请输入姓名" />
+        </mp-cell>
+        <mp-cell title="性别">
+          <mp-checkbox-group multi="{{false}}" bindchange="sexChange">
+            <mp-checkbox wx:for="{{checkboxItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
+          </mp-checkbox-group>
+        </mp-cell>
+        <mp-cell title="生日" link="true">
+          <picker data-field="birthday" mode="date" value="{{birthday}}" bindchange="bindbirthdayChange">
+            <view class="weui-input">{{birthday}}</view>
+          </picker>
+        </mp-cell>
+        <mp-cell title="年龄">
+          <input bindinput="ageChange" data-field="age" class="weui-input" placeholder="请输入年龄" />
+        </mp-cell>
+        <mp-cell title="病历号">
+          <input bindinput="medicalRecordNoChange" data-field="medicalRecordNo" class="weui-input" placeholder="请输入病历号" />
+        </mp-cell>
+        <mp-cell prop="mobilePhone" title="手机号" ext-class=" weui-input">
+          <input bindinput="mobilePhoneChange" data-field="mobilePhone" class="weui-input" placeholder="请输入手机号" />
+        </mp-cell>
+        <mp-cell title="座机" ext-class=" weui-input">
+          <input bindinput="phoneChange" data-field="phone" class="weui-input" placeholder="请输入座机" />
+        </mp-cell>
+        <mp-cell title="地区" link="true">
+          <picker data-field="region" mode="region" bindchange="regionChange">
+            <view class="weui-input">{{region}}</view>
+          </picker>
+        </mp-cell>
+        <mp-cell prop="address" title="详细地址">
+          <input bindinput="addressChange" data-field="address" class="weui-input" placeholder="请输入详细地址" />
+        </mp-cell>
+        <mp-cell title="患者备注">
+          <view class="section">
+            <textarea bindblur="remarkBlur" value="{{remark}}" auto-height placeholder="请输入备注" />
+          </view>
+        </mp-cell>
+      </mp-cells>
+    </mp-form>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+    </view>
+  </view>
+  <mp-toptips msg="{{successInfo}}" type="success" show="{{successInfo}}"></mp-toptips>
+  <mp-toptips msg="{{errorInfo}}" type="error" show="{{errorInfo}}"></mp-toptips>
+  <!-- <view class="page__bd">
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="default" bindtap="openConfirm">确认取消按钮</button>
+    </view>
+  </view>
+  <mp-dialog title="test" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+    <view>test content</view>
+  </mp-dialog> -->
+</view>
