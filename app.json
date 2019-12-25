@@ -5,8 +5,8 @@
     "pages/add/add",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/user/user"
-    
+    "pages/user/user",
+    "pages/list/list"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,6 +20,26 @@
     }
   },
   "usingComponents": {
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-picker": "@vant/weapp//picker/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
     "mp-toptips": "weui-miniprogram/toptips/toptips",
     "mp-cells": "weui-miniprogram/cells/cells",
@@ -27,7 +47,8 @@
     "mp-checkbox": "weui-miniprogram/checkbox/checkbox",
     "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
     "mp-form": "weui-miniprogram/form/form",
-    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar"
+    "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
+    "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
   },
   "tabBar": {
     "custom": true,

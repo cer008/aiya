@@ -1,0 +1,39 @@
+<view class="page">
+  <!-- <view class="page__hd">
+        <view class="page__title">SearchBar</view>
+        <view class="page__desc">搜索栏</view>
+    </view>
+    <view class="page__bd">
+        <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+    </view> -->
+  <van-search value="{{ searchValue }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel" />
+  <van-cell-group wx:for="{{list}}">
+    <van-cell center clickable link-type="navigateTo" url="/pages/add/add">
+    <van-row>
+      <van-col span="3">
+        <van-image wx:if="{{item.sex==0}}" round width="3rem" height="3rem" src="/image/nan.png" />
+        <van-image wx:else round width="3rem" height="3rem" src="/image/nv.png" />
+      </van-col>
+      <van-col span="6" offset="1">
+        <van-row class="name" >{{item.name}}</van-row>
+        <van-row class="mobilePhone">{{item.mobilePhone}}</van-row>
+      </van-col>
+      <van-col span="8" offset="5" class="opeDate">日期:{{item.opeDate}}</van-col>
+    </van-row>
+    </van-cell>
+  </van-cell-group>
+  <!-- <view wx:for="{{list}}">
+    <van-row>
+      <van-col span="3" offset="1">
+        <van-image wx:if="{{item.sex==0}}" round width="3rem" height="3rem" src="/image/nan.png" />
+        <van-image wx:else round width="3rem" height="3rem" src="/image/nv.png" />
+      </van-col>
+      <van-col span="6" offset="1">
+        <van-row class="name">{{item.name}}</van-row>
+        <van-row class="mobilePhone">{{item.mobilePhone}}</van-row>
+      </van-col>
+      <van-col span="8" offset="5" class="opeDate">日期:{{item.opeDate}}</van-col>
+    </van-row>
+    <van-divider />
+  </view> -->
+</view>

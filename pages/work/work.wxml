@@ -17,8 +17,8 @@
        <van-divider />
       <van-grid clickable column-num="3" border="{{ false }}" gutter="{{ 50 }}">
         <van-grid-item icon="/image/sheet_4.png" link-type="switchTab" url="/pages/dashboard/index" text="日程" />
-        <van-grid-item icon="/image/sheet_5.png" link-type="switchTab" bind:click="clicktest" text="添加" />     
-        <van-grid-item icon="/image/sheet_23.png" link-type="switchTab" url="/pages/dashboard/index" text="患者" info="1" />
+        <van-grid-item icon="/image/sheet_5.png" link-type="navigateTo" url="/pages/add/add" text="添加" />     
+        <van-grid-item icon="/image/sheet_23.png" link-type="navigateTo" url="/pages/list/list" text="患者" info="1" />
         <!-- <van-grid-item icon="/image/sheet_23.png" link-type="switchTab" url="/pages/dashboard/index" text="测试" info="1" /> -->
         <!-- <van-grid-item icon="add" link-type="navigateTo" url="/pages/dashboard/index" text="添加病历" info="99+" /> -->
       </van-grid>

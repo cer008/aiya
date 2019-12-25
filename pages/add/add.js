@@ -129,13 +129,17 @@ Component({
                 },
                 data: {
                   token: res.data,
-                  date: this.data.formData
+                  data: this.data.formData
                 },
                 success: function(res) {
                   if (res.data.code === 200) {
                     this.setData({
                       successInfo: '保存成功'
                     })
+                    wx.navigateTo({
+                      url: '/pages/work/work',
+                    })
+
                   } else {
                     this.setData({
                       errorInfo: '保存失败'

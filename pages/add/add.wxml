@@ -1,3 +1,4 @@
+<mp-navigation-bar loading="{{loading}}" show="{{show}}" animated="{{animated}}" color="{{color}}" background="{{background}}" title="UI组件库" back="{{true}}"></mp-navigation-bar>
 <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
   <view class="page__hd">
@@ -53,12 +54,4 @@
   </view>
   <mp-toptips msg="{{successInfo}}" type="success" show="{{successInfo}}"></mp-toptips>
   <mp-toptips msg="{{errorInfo}}" type="error" show="{{errorInfo}}"></mp-toptips>
-  <!-- <view class="page__bd">
-    <view class="weui-btn-area">
-      <button class="weui-btn" type="default" bindtap="openConfirm">确认取消按钮</button>
-    </view>
-  </view>
-  <mp-dialog title="test" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
-    <view>test content</view>
-  </mp-dialog> -->
 </view>
