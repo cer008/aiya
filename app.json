@@ -7,7 +7,8 @@
     "pages/logs/logs",
     "pages/user/user",
     "pages/list/list",
-    "pages/edit/edit"
+    "pages/edit/edit",
+    "pages/photo/photo"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -41,6 +42,7 @@
     "van-image": "@vant/weapp/image/index",
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
+    "van-uploader": "@vant/weapp/uploader/index",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
     "mp-toptips": "weui-miniprogram/toptips/toptips",
     "mp-cells": "weui-miniprogram/cells/cells",
