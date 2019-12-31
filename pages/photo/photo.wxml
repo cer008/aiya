@@ -1,6 +1,16 @@
-<van-uploader
-  file-list="{{ fileList }}"
-  use-before-read
-  bind:before-read="beforeRead"
-  bind:after-read="afterRead"
-/>
+
+<view class="page">
+<van-nav-bar left-arrow	bind:click-left="onClickLeft" bind:click-right="onClickRight">
+  <image style="width: 20px; height: 20px;" src="/image/jiahao.png" slot="right"></image>
+  <!-- <van-icon name="plus" slot="right" /> -->
+</van-nav-bar>
+  <view class="section section_gap" wx:for="{{array}}" wx:for-item="item">
+    <van-divider customStyle="color: black;border-color: white;" contentPosition="center" dashed>{{item.text}}</van-divider>
+    <view class="section__ctn">
+      <image bindtap="preview" style="width: 50px; height: 50px; background-color: #eeeeee;margin-left:2px;" mode="scaleToFill" src="{{item.src}}" data-src="{{item.src}}"></image>
+      <image bindtap="preview" style="width: 50px; height: 50px; background-color: #eeeeee;margin-left:2px;" mode="scaleToFill" src="{{item.src}}" data-src="{{item.src}}"></image>
+
+    </view>
+  </view>
+
+</view>

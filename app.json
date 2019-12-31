@@ -43,6 +43,7 @@
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
     "van-uploader": "@vant/weapp/uploader/index",
+    "van-icon": "@vant/weapp/icon/index",
     "mp-dialog": "weui-miniprogram/dialog/dialog",
     "mp-toptips": "weui-miniprogram/toptips/toptips",
     "mp-cells": "weui-miniprogram/cells/cells",
